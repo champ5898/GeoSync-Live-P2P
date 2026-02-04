@@ -1,41 +1,30 @@
 
-# GeoSync: Peer-to-Peer Live Tracker
+# GeoSync: Peer-to-Peer Live Tracker & Group Hub
 
-GeoSync is a decentralized, real-time location sharing application that allows friends to track each other's coordinates without relying on a central server for data storage. It leverages Gun.js for peer-to-peer data synchronization and Google Gemini AI for contextual group insights.
+GeoSync is a decentralized, real-time social layer for small groups. Coordinate, communicate, and track locations peer-to-peer without centralized infrastructure.
 
-## 🚀 Features
+## 🚀 Enhanced Features
 
-- **Decentralized Sync**: Powered by [Gun.js](https://gun.eco/), data is synchronized directly between peers using decentralized relay nodes.
+- **P2P Group Chat**: Instant messaging synced via Gun.js. No message history is stored on any server—only on your and your friends' devices.
+- **Proximity Radar**: The app automatically calculates and displays your real-time distance from every other peer in the room.
+- **AI Intelligence**: Leveraging Gemini AI, get instant "Scout Reports" that analyze the group's positioning to suggest nearby meet-up spots or summarize distribution.
+- **Smart Notifications**: Unread message badges and active peer status tracking.
 - **Offline Resilience**:
-  - **Caching**: The app automatically saves the last known positions of all peers in your room to `localStorage`.
-  - **Automatic Re-sync**: When you regain internet connectivity, the app automatically pushes your latest location updates to the network.
-  - **Offline UI**: Visual indicators inform you when you are viewing cached data versus live updates.
-- **AI Concierge**: Uses Gemini AI to analyze your group's distribution and suggest activities or summarize the group's current status.
-- **Privacy-Centric**: No central database holds your location history. Data is ephemeral and filtered out if updates are older than 10 minutes.
-- **Dark Mode Map**: Beautiful, high-performance dark-themed maps using [Leaflet](https://leafletjs.com/) and CartoDB.
+  - **Location Caching**: View where everyone was last seen, even without an active connection.
+  - **Chat Persistence**: Conversation history is cached locally so you never lose context.
+  - **Auto-Sync**: Reconnects and pushes updates automatically when internet returns.
 
-## 🛠️ Tech Stack
+## 🛠️ Security & Privacy
 
-- **Frontend**: React, TypeScript, Tailwind CSS
-- **Map Engine**: Leaflet.js
-- **P2P Database**: Gun.js
-- **Intelligence**: Google Gemini API (@google/genai)
-- **Icons**: Lucide React
+- **No Servers**: Your data flows through decentralized relay nodes (like Gun Manhattan). 
+- **Ephemeral**: Location data older than 10 minutes is automatically purged from the room state.
+- **Local Sovereignty**: All settings and profile data stay in your browser's local storage.
 
-## 📦 Getting Started
+## 📦 Usage
 
-1. **Enter your Name**: This will be displayed on the map for your friends.
-2. **Create/Join a Room**: Enter a custom room ID or leave it blank to generate a random one.
-3. **Share the Link**: Copy the URL (containing the hash) and send it to your friends.
-4. **Track Live**: Watch markers move in real-time as peers move.
+1. **Pick a Handle**: Choose a display name for the map.
+2. **Sync with Friends**: Join a custom room ID or share your auto-generated link.
+3. **Chat & Navigate**: Use the floating chat button to coordinate and see how far others are as you move!
 
-## 🔒 Offline & Sync Logic
-
-The app monitors `navigator.onLine`. 
-- **While Offline**: Coordinates are still tracked via GPS and updated in the local UI state.
-- **Persistence**: Every location change is mirrored to browser storage. If you refresh while offline, your friends' last known positions reappear.
-- **Re-sync**: The `online` event triggers an immediate push of your current `UserLocation` object to ensure peers see your current status as soon as you reconnect.
-
-## 📄 License
-
-MIT - Feel free to use and modify for your own peer-to-peer location projects!
+---
+*Built with React, Gun.js, Leaflet, and Gemini AI.*

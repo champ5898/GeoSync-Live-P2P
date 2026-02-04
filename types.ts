@@ -8,6 +8,15 @@ export interface UserLocation {
   color: string;
 }
 
+export interface ChatMessage {
+  id: string;
+  senderId: string;
+  senderName: string;
+  text: string;
+  timestamp: number;
+  color: string;
+}
+
 export interface RoomState {
   id: string;
   users: Record<string, UserLocation>;

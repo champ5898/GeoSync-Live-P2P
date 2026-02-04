@@ -1,8 +1,9 @@
 
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 import { UserLocation } from "../types";
 
 export const getGeminiInsights = async (locations: UserLocation[]): Promise<string> => {
+  // Use named parameter for apiKey initialization
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   const locationSummary = locations
@@ -22,11 +23,13 @@ export const getGeminiInsights = async (locations: UserLocation[]): Promise<stri
   `;
 
   try {
+    // Correct usage of ai.models.generateContent with model and contents
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });
 
+    // Access .text property directly (not a method)
     return response.text || "Unable to generate insights at this moment.";
   } catch (error) {
     console.error("Gemini Error:", error);
