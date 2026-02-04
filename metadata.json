@@ -1,0 +1,7 @@
+{
+  "name": "GeoSync: Peer-to-Peer Live Tracker",
+  "description": "A decentralized real-time location sharing app powered by Gun.js and Gemini AI for contextual insights.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
